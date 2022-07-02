@@ -23,6 +23,24 @@
         }
     };
 
+    // gets away score only if sum of awayscore and homescore is greater than 0
+    export let getAwayScore = (match) => {
+        if (Number(match.GoalsAway) + Number(match.GoalsHome) > 0) {
+            return match.GoalsAway;
+        } else {
+            return "-";
+        }
+    };
+
+    // gets home score only if sum of awayscore and homescore is greater than 0
+    export let getHomeScore = (match) => {
+        if (Number(match.GoalsAway) + Number(match.GoalsHome) > 0) {
+            return match.GoalsHome;
+        } else {
+            return "-";
+        }
+    };
+
     setInterval(() => {
         fetchMatches().then((m) => (matches = m));
     }, 3 * 1000);
@@ -47,11 +65,11 @@
                     <h2 class="col-33">{match.TeamAway}</h2>
                 </div>
                 <div class="dflex ">
-                    <div class="score col-33">{match.GoalsHome}</div>
+                    <div class="score col-33">{getHomeScore(match)}</div>
                     <div class="date col-33">
                         <!-- {match.StartTime.substr(0, match.StartTime.length - 3)} -->
                     </div>
-                    <div class="score col-33">{match.GoalsAway}</div>
+                    <div class="score col-33">{getAwayScore(match)}</div>
                 </div>
             </div>
         {/each}
