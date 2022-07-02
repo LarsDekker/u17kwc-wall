@@ -14,7 +14,7 @@
             return jsonData.value.slice(0, 25).filter((m) => {
                 console.log(m);
                 let hour = m.StartTime.split(":")[0];
-                let currentHour = date.getHours();
+                let currentHour = date.getHours() - 1;
                 console.log(hour, currentHour);
                 return hour >= currentHour;
             });
@@ -46,13 +46,13 @@
                     </span>
                     <h2 class="col-33">{match.TeamAway}</h2>
                 </div>
-                <!-- <div class="dflex ">
-                        <div class="score col-33">{match.GoalsHome}</div>
-                        <div class="date col-33">
-                            {match.StartTime.substr(0, match.StartTime.length - 3)}
-                        </div>
-                        <div class="score col-33">{match.GoalsAway}</div>
-                    </div> -->
+                <div class="dflex ">
+                    <div class="score col-33">{match.GoalsHome}</div>
+                    <div class="date col-33">
+                        <!-- {match.StartTime.substr(0, match.StartTime.length - 3)} -->
+                    </div>
+                    <div class="score col-33">{match.GoalsAway}</div>
+                </div>
             </div>
         {/each}
     </div>
